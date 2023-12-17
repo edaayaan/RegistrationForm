@@ -1,0 +1,40 @@
+﻿@model List<StajProje.Models.Members>
+
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col" hidden>ID</th>
+            <th scope="col">Name</th>
+            <th scope="col">Surname</th>
+            <th scope="col">Age</th>
+            <th scope="col">Date of Birth</th>
+            <th scope="col">Gender</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col">Password</th>
+            <th scope="col">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td hidden>@item.id</td>
+                <td>@item.name</td>
+                <td>@item.surname</td>
+                <td>@item.age</td>
+                <td>@item.date_of_birth.ToString("dd/MM/yyyy")</td>
+                <td>@item.gender</td>
+                <td>@item.email</td>
+                <td>@item.password</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Member", new { id = item.id })" role="button" class="btn btn-primary">Edit</a>
+                    <a href="@Url.Action("Delete", "Member", new { id = item.id })" role="button" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<a href="~/Member/Insert" class="btn btn-success mb-4" role="button">Add New Member</a>
+<a href="~/Member/Statistics" class="btn btn-info mb-4" role="button">Show Statistics</a>
+
